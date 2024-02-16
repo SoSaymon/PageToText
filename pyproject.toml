@@ -7,6 +7,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+ebooklib = "^0.18"
+beautifulsoup4 = "^4.12.3"
 
 
 [build-system]

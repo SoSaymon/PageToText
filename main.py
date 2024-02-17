@@ -1,12 +1,12 @@
 from typing import List
 
-from bs4 import BeautifulSoup
 import ebooklib
+from bs4 import BeautifulSoup
 from ebooklib import epub
 from spire.pdf import PdfDocument
 
 
-def epub2html(epub_path: str) -> List:
+def epub2html(epub_path: str) -> List[str]:
     book = epub.read_epub(epub_path)
     chapters = []
     for item in book.get_items():
@@ -27,7 +27,7 @@ def chapter2text(chapter: str) -> str:
     return output
 
 
-def thtml2ttext(thtml):
+def thtml2ttext(thtml: List[str]) -> List[str]:
     output = []
     for html in thtml:
         text = chapter2text(html)
@@ -36,19 +36,19 @@ def thtml2ttext(thtml):
     return output
 
 
-def epub2text(epub_path):
+def epub2text(epub_path: str) -> List[str]:
     chapters = epub2html(epub_path)
     ttext = thtml2ttext(chapters)
     return ttext
 
 
-def output_text(text):
+def output_text(text: List[str]) -> None:
     with open("output.txt", "w", encoding="utf-8") as f:
         for t in text:
             f.write(t)
 
 
-def pdf2list(pdf_path):
+def pdf2list(pdf_path: str) -> List[str]:
     doc = PdfDocument()
     doc.LoadFromFile(pdf_path)
 
@@ -64,7 +64,7 @@ def pdf2list(pdf_path):
     return list_
 
 
-def list2text(list_):
+def list2text(list_: List[str]) -> None:
     with open("output.txt", "w", encoding="utf-8") as f:
         for text in list_:
             f.write(text + "\n")

@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11"
 ebooklib = "^0.18"
 beautifulsoup4 = "^4.12.3"
+spire-pdf = "^10.2.0"
 
 
 [build-system]
